@@ -46,3 +46,63 @@ We can fix this by making the list items inline boxes instead of block boxes via
     margin-right: 0;
 }
 
+/* SUBMENUS - Our submenu is going to look just like the top-level menu, 
+except the whole thing will be nested inside a list item. */
+
+.features-menu {
+    display: flex;
+    flex-direction: column;
+    background: #B2D6FF;
+    border-radius: 5px;
+    padding-top: 60px;
+
+    /* We want our other top-level menu items to display just like they 
+    did before we added the submenu, as if the submenu wasn’t even there */
+    position: absolute;
+    top: -25px;
+    left: -30px;
+}
+
+.features-menu li {
+    list-style: none;
+    border-bottom: 1px solid #FFF;
+
+    padding: 0 40px 10px 20px;
+    margin: 10px;
+}
+
+.features-menu li:last-of-type {
+    border-bottom: none;
+}
+
+.dropdown {
+    position: relative;
+}
+
+/* Z-INDEX = We’ve never had to deal with “depth” issues before. Until now, all our HTML elements rendered above
+ or below one another in an intuitive way. But, since we’re doing advanced stuff, 
+relying on the browser to determine which elements appear on top of other ones isn’t going to cut it.
+The z-index property lets you control the depth of elements on the page. If you think of your screen as 3D space, 
+negative z-index values go farther into the page, and positive ones come out of the page. */
+
+.dropdown > span {
+    z-index: 2;
+    position: relative;
+    cursor: pointer;
+}
+
+.features-menu {
+    z-index: 1;
+}
+
+/* pseudo-classes for dropdown menus = Remember that :hover pseudo-class from the CSS Selectors*/
+
+.dropdown:hover .features-menu {
+    display: flex;
+    flex-direction: column;
+    background: #B2D6FF;
+}
+
+.features-menu {
+    display: none;
+}
